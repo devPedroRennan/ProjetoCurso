@@ -38,10 +38,12 @@ col1.metric("Preço", book_price)
 col2.metric("Nota", book_rating)
 col3.metric("Ano", book_year)
 
-#criando a review de acordo com o livro
-book_review = df_reviews_f["review description"]
+#linha divisoria, so pela estetica
+st.divider()
 
-x = 0
-for x in range(10):
-    st.write("Review ", x)
-    st.markdown(book_review[x])
+#o for que vai escrever as reviews
+for row in df_reviews_f.values:
+    message = st.chat_message(f"{row[4]}")
+    message.write(f"**{row[2]}**")
+    message.write(row[5])
+    message.caption(row[3])
